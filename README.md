@@ -30,22 +30,22 @@
 ## Detailed Steps
 
 ### 1. Graph Representation:
-- **Node Features**: Let \( x_i \) denote the feature vector associated with node \( i \), representing an object detected by YOLO. This feature vector includes bounding box coordinates, class probabilities, and visual features extracted using convolutional neural networks (CNNs).
-- **Edge Features**: Define edge features \( e_{ij} \) between nodes \( i \) and \( j \) based on spatial relationships such as the distance between bounding boxes, relative orientations, and overlap between objects.
+- **Node Features**: Let $\( x_i \)$ denote the feature vector associated with node $\( i \)$, representing an object detected by YOLO. This feature vector includes bounding box coordinates, class probabilities, and visual features extracted using convolutional neural networks (CNNs).
+- **Edge Features**: Define edge features $\( e_{ij} \)$ between nodes $\( i \)$ and $\( j \)$ based on spatial relationships such as the distance between bounding boxes, relative orientations, and overlap between objects.
 
 ### 2. Graph Convolutional Networks (GCNs):
-- **Node Update Function**: The node update function aggregates information from neighboring nodes and updates node features. Let \( h_i^l \) denote the node feature vector at layer \( l \), the node update function can be formulated as:
-\[ h_i^{l+1} = \sigma \left( \sum_{j \in \mathcal{N}(i)} \frac{1}{c_{ij}} W^{(l)} h_j^l + b^{(l)} \right) \]
-where \( \mathcal{N}(i) \) represents the neighbors of node \( i \), \( W^{(l)} \) and \( b^{(l)} \) are learnable parameters of the GCN layer, \( c_{ij} \) is a normalization factor, and \( \sigma \) is the activation function.
+- **Node Update Function**: The node update function aggregates information from neighboring nodes and updates node features. Let $\( h_i^l \)$ denote the node feature vector at layer $\( l \)$, the node update function can be formulated as:
+$\[ h_i^{l+1} = \sigma \left( \sum_{j \in \mathcal{N}(i)} \frac{1}{c_{ij}} W^{(l)} h_j^l + b^{(l)} \right) \]$
+where $\( \mathcal{N}(i) \)$ represents the neighbors of node $\( i \)$, $\( W^{(l)} \)$ and $\( b^{(l)} \)$ are learnable parameters of the GCN layer, $\( c_{ij} \)$ is a normalization factor, and $\( \sigma \)$ is the activation function.
 
 ### 3. Object Detection Integration:
 - **Feature Fusion**: Integrate GCN layers into the YOLO architecture by fusing GCN-processed features with traditional YOLO feature maps.
-- **GCN Output**: The output of the GCN layers, denoted as \( H \), is concatenated with the YOLO feature maps, and further processed to predict bounding boxes and class probabilities for each grid cell.
+- **GCN Output**: The output of the GCN layers, denoted as $\( H \)$, is concatenated with the YOLO feature maps, and further processed to predict bounding boxes and class probabilities for each grid cell.
 
 ### 4. Loss Function:
-- **Objective Function**: The loss function for the integrated YOLO-GCN model combines YOLO-specific objectives (e.g., bounding box regression, object classification) and GCN-specific objectives (e.g., node feature aggregation). Let \( L_{YOLO} \) denote the YOLO loss and \( L_{GCN} \) denote the GCN loss, the overall loss function can be defined as:
-\[ L_{total} = \lambda L_{YOLO} + (1 - \lambda) L_{GCN} \]
-where \( \lambda \) is a hyperparameter controlling the trade-off between YOLO and GCN objectives.
+- **Objective Function**: The loss function for the integrated YOLO-GCN model combines YOLO-specific objectives (e.g., bounding box regression, object classification) and GCN-specific objectives (e.g., node feature aggregation). Let $\( L_{YOLO} \)$ denote the YOLO loss and $\( L_{GCN} \)$ denote the GCN loss, the overall loss function can be defined as:
+$\[ L_{total} = \lambda L_{YOLO} + (1 - \lambda) L_{GCN} \]$
+where $\( \lambda \)$ is a hyperparameter controlling the trade-off between YOLO and GCN objectives.
 
 ### 5. Training:
 - **End-to-End Training**: Train the integrated YOLO-GCN model end-to-end using stochastic gradient descent (SGD) or other optimization techniques. Update the parameters of both YOLO and GCN components simultaneously to minimize the total $loss \( L_{total} \)$.
