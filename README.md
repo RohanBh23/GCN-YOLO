@@ -51,3 +51,6 @@ where $\( \lambda \)$ is a hyperparameter controlling the trade-off between YOLO
 - **End-to-End Training**: Train the integrated YOLO-GCN model end-to-end using stochastic gradient descent (SGD) or other optimization techniques. Update the parameters of both YOLO and GCN components simultaneously to minimize the total $loss \( L_{total} \)$.
 
 This mathematical formulation provides a detailed framework for integrating Graph Convolutional Network layers into YOLO for object detection tasks, enabling better understanding of spatial relationships between objects in images.
+
+## References
+Z. Liu, Z. Jiang, W. Feng and H. Feng, "OD-GCN: Object Detection Boosted by Knowledge GCN," 2020 IEEE International Conference on Multimedia & Expo Workshops (ICMEW), London, UK, 2020, pp. 1-6, doi: 10.1109/ICMEW46912.2020.9105952. keywords: {Object detection;Convolution;Task analysis;Training;Fish;Benchmark testing;Adaptation models;graph convolutional network;object detection;knowledge graph},
